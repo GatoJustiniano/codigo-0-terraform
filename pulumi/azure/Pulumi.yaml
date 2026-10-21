@@ -1,0 +1,6 @@
+name: asistenciaweb-azure
+description: Infraestructura de asistenciaweb (frontend + backend) en Azure con Pulumi
+runtime:
+  name: nodejs
+  options:
+    packagemanager: npm

@@ -38,9 +38,8 @@ Para borrar todo: `terraform destroy`.
 
 ## Cuenta gratuita
 
-- En la suscripcion de prueba `Standard_B1s` no esta disponible en las regiones comunes y `eastus` bloquea los tamanos B. Por eso se usa `mexicocentral` con `Standard_B2ats_v2` en ambas VMs.
-- La prueba permite 4 vCPU por region: 2 VMs x 2 vCPU llega justo al limite.
-- 750 h/mes de B2ats_v2 son gratuitas; la segunda VM se descuenta del credito de prueba.
+- En la suscripcion de prueba `Standard_B1s` esta bloqueado en las regiones comunes, y `Standard_B2ats_v2` (el de 750 h gratis) dio `AllocationFailed` por falta de capacidad en `mexicocentral` y `westus2`. Por eso se usa `westus2` con `Standard_B2ts_v2` (sugerido por Azure) en ambas VMs, pagado con el credito de prueba (~USD 8/mes por VM). El estado sigue guardado en `mexicocentral`; eso no afecta.
+- La prueba permite 4 vCPU por region: 2 VMs x 2 vCPU llega justo al limite. Si un `apply` falla al crear las VMs, borrarlas a mano (`az vm delete` + `az disk delete`) antes de reintentar, porque quedan ocupando la cuota.
 - Los discos de 64 GB Premium SSD (P6) estan cubiertos (dos incluidos).
 - Para revisar otra region: `az vm list-skus --location <region> --size Standard_B2ats_v2 --all -o json` (sin `restrictions` = disponible) y `az vm list-usage --location <region> -o table` (cuota de vCPU).
 - Apaga o destruye las VMs cuando no las uses, y ejecuta `terraform destroy` antes de que termine la prueba.

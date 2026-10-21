@@ -1,0 +1,16 @@
+{
+  "name": "asistenciaweb-azure",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@pulumi/azure-native": "^3.29.0",
+    "@pulumi/pulumi": "^3.270.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typescript": "~5.9.3"
+  }
+}

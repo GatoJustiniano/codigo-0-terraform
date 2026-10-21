@@ -6,7 +6,7 @@ variable "subscription_id" {
 variable "location" {
   description = "Region de Azure"
   type        = string
-  default     = "mexicocentral"
+  default     = "westus2"
 }
 
 variable "vnet_cidr" {
@@ -38,15 +38,15 @@ variable "ssh_public_key_path" {
   default     = "~/.ssh/id_ed25519.pub"
 }
 
-# B1s no esta disponible para la suscripcion de prueba; B2ats_v2 si (2 x 2 vCPU = limite de 4)
+# Suscripcion de prueba: B1s bloqueado y B2ats_v2 sin capacidad en westus2; B2ts_v2 si (2 x 2 vCPU = limite de 4)
 variable "frontend_vm_size" {
   description = "Tamano de la VM del frontend"
   type        = string
-  default     = "Standard_B2ats_v2"
+  default     = "Standard_B2ts_v2"
 }
 
 variable "backend_vm_size" {
   description = "Tamano de la VM del backend"
   type        = string
-  default     = "Standard_B2ats_v2"
+  default     = "Standard_B2ts_v2"
 }

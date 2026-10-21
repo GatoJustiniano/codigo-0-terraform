@@ -3,7 +3,7 @@ subscription_id = "00000000-0000-0000-0000-000000000000"
 my_ip_cidr      = "1.2.3.4/32"
 
 # Opcionales
-# location            = "mexicocentral"
+# location            = "westus2"
 # ssh_public_key_path = "~/.ssh/id_ed25519.pub"
-# frontend_vm_size    = "Standard_B2ats_v2"
-# backend_vm_size     = "Standard_B2ats_v2"
+# frontend_vm_size    = "Standard_B2ts_v2"
+# backend_vm_size     = "Standard_B2ts_v2"
