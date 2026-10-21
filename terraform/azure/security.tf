@@ -29,6 +29,8 @@ resource "azurerm_network_security_group" "frontend" {
     destination_address_prefix = "*"
   }
 
+  # El frontend es un sitio web publico: HTTPS abierto a Internet es intencional
+  #trivy:ignore:AZU-0047
   security_rule {
     name                       = "https-publico"
     description                = "HTTPS publico"

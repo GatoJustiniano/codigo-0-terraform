@@ -1,21 +1,12 @@
-# Imagen Ubuntu 24.04 (equivale al data "aws_ami" del proyecto AWS)
-locals {
-  ubuntu_image = {
-    publisher = "Canonical"
-    offer     = "ubuntu-24_04-lts"
-    sku       = "server"
-    version   = "latest"
-  }
-}
-
 # VM: Frontend
 resource "azurerm_linux_virtual_machine" "frontend" {
-  name                  = "asistenciaweb-frontend"
-  location              = azurerm_resource_group.main.location
-  resource_group_name   = azurerm_resource_group.main.name
-  size                  = var.frontend_vm_size
-  admin_username        = var.admin_username
-  network_interface_ids = [azurerm_network_interface.frontend.id]
+  name                       = "asistenciaweb-frontend"
+  location                   = azurerm_resource_group.main.location
+  resource_group_name        = azurerm_resource_group.main.name
+  size                       = var.frontend_vm_size
+  admin_username             = var.admin_username
+  network_interface_ids      = [azurerm_network_interface.frontend.id]
+  allow_extension_operations = false
 
   admin_ssh_key {
     username   = var.admin_username
@@ -39,12 +30,13 @@ resource "azurerm_linux_virtual_machine" "frontend" {
 
 # VM: Backend
 resource "azurerm_linux_virtual_machine" "backend" {
-  name                  = "asistenciaweb-backend"
-  location              = azurerm_resource_group.main.location
-  resource_group_name   = azurerm_resource_group.main.name
-  size                  = var.backend_vm_size
-  admin_username        = var.admin_username
-  network_interface_ids = [azurerm_network_interface.backend.id]
+  name                       = "asistenciaweb-backend"
+  location                   = azurerm_resource_group.main.location
+  resource_group_name        = azurerm_resource_group.main.name
+  size                       = var.backend_vm_size
+  admin_username             = var.admin_username
+  network_interface_ids      = [azurerm_network_interface.backend.id]
+  allow_extension_operations = false
 
   admin_ssh_key {
     username   = var.admin_username

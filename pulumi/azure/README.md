@@ -42,7 +42,7 @@ La prueba permite 4 vCPU por region y cada version usa 4 (2 VMs x 2 vCPU).
    az storage container create -n pulumistate --account-name tfstateasistenciaweb --auth-mode key
    ```
 
-3. En cada terminal nueva, definir las variables del backend y la frase que cifra los secretos del stack (elegir una y no perderla):
+3. En cada terminal nueva (se pierden al cerrarla), definir las variables del backend y la frase que cifra los secretos del stack (elegir una y no perderla). Sin ellas `pulumi` falla con `Options.AccountName is required`:
 
    ```powershell
    $env:AZURE_STORAGE_ACCOUNT = "tfstateasistenciaweb"
@@ -53,7 +53,7 @@ La prueba permite 4 vCPU por region y cada version usa 4 (2 VMs x 2 vCPU).
 4. Iniciar sesion en el backend y crear el stack:
 
    ```bash
-   pulumi login azblob://pulumistate
+   pulumi login "azblob://pulumistate?storage_account=tfstateasistenciaweb"
    pulumi stack init dev
    ```
 

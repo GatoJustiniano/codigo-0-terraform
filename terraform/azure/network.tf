@@ -13,6 +13,7 @@ resource "azurerm_virtual_network" "main" {
 }
 
 resource "azurerm_subnet" "public" {
+  #checkov:skip=CKV2_AZURE_31:Frontend y backend comparten subred con reglas distintas; el NSG se asocia a cada NIC (security.tf)
   name                 = "asistenciaweb-subnet-publica"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
@@ -37,7 +38,10 @@ resource "azurerm_public_ip" "backend" {
 }
 
 # Interfaces de red
+# Las IPs publicas son parte del diseno (no hay balanceador ni bastion); el acceso lo limita el NSG
+#trivy:ignore:AZU-0076
 resource "azurerm_network_interface" "frontend" {
+  #checkov:skip=CKV_AZURE_119:IP publica necesaria para servir la web y para SSH desde la IP autorizada
   name                = "asistenciaweb-frontend-nic"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
@@ -50,7 +54,9 @@ resource "azurerm_network_interface" "frontend" {
   }
 }
 
+#trivy:ignore:AZU-0076
 resource "azurerm_network_interface" "backend" {
+  #checkov:skip=CKV_AZURE_119:IP publica necesaria para SSH desde la IP autorizada y la API publica en el puerto 3000
   name                = "asistenciaweb-backend-nic"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name

@@ -50,6 +50,7 @@ function createServer(role: string, args: ServerArgs) {
     osProfile: {
       computerName: name,
       adminUsername,
+      allowExtensionOperations: false,
       linuxConfiguration: {
         disablePasswordAuthentication: true,
         ssh: {
