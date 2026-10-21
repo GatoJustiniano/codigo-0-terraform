@@ -6,7 +6,7 @@ variable "subscription_id" {
 variable "location" {
   description = "Region de Azure"
   type        = string
-  default     = "eastus"
+  default     = "mexicocentral"
 }
 
 variable "vnet_cidr" {
@@ -35,14 +35,14 @@ variable "admin_username" {
 variable "ssh_public_key_path" {
   description = "Ruta a la clave publica SSH local"
   type        = string
-  default     = "~/.ssh/id_rsa.pub"
+  default     = "~/.ssh/id_ed25519.pub"
 }
 
-# Cuenta gratuita: 750 h/mes de cada tamano, por eso se usa uno distinto por VM
+# B1s no esta disponible para la suscripcion de prueba; B2ats_v2 si (2 x 2 vCPU = limite de 4)
 variable "frontend_vm_size" {
   description = "Tamano de la VM del frontend"
   type        = string
-  default     = "Standard_B1s"
+  default     = "Standard_B2ats_v2"
 }
 
 variable "backend_vm_size" {
