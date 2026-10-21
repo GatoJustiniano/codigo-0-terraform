@@ -19,3 +19,13 @@ override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
+
+# OpenTofu
+.terraform.tfstate.lock.info
+
+# Pulumi
+node_modules/
+venv/
+__pycache__/
+bin/
+obj/

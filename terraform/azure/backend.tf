@@ -5,6 +5,6 @@ terraform {
     resource_group_name  = "asistenciaweb-tfstate-rg"
     storage_account_name = "tfstateasistenciaweb"
     container_name       = "tfstate"
-    key                  = "asistenciaweb/terraform.tfstate"
+    key                  = "terraform/azure/asistenciaweb.tfstate"
   }
 }
