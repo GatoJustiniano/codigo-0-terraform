@@ -1,0 +1,21 @@
+# Archivos locales de Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Archivos de variables que pueden contener valores sensibles
+*.tfvars
+*.tfvars.json
+!*.example.tfvars
+
+# Archivos de configuración local de Terraform
+.terraformrc
+terraform.rc
+
+# Archivos de sobrescritura locales
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
